@@ -18,8 +18,11 @@ app.get("/", function(req, res){
 			const weatherData = JSON.parse(data);
 			const temp = weatherData.main.temp;
 			const desc = weatherData.weather[0].description;
-			res.write("<h1> The weather is currently " + desc + "</h1>");
-			res.write(" <br><h1>The temperature in Gaya is " + temp + " degree Celcious ");
+			const icon = weatherData.weather[0].icon;
+			const imageURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
+			res.write("<h1> The weather is currently " + desc + "</h1> <img src="+imageURL+ ">");
+			res.write(" <br><h1>The temperature in Gaya is " + temp + " degree Celcious </h1>");
+			// res.write("<img src="+ imageURL +">");
 			res.send();
 		})
 	})
