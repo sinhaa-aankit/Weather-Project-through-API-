@@ -18,12 +18,15 @@ app.get("/", function(req, res){
 			const weatherData = JSON.parse(data);
 			const temp = weatherData.main.temp;
 			const desc = weatherData.weather[0].description;
+			res.write("<h1> The weather is currently " + desc + "</h1>");
+			res.write(" <br><h1>The temperature in Gaya is " + temp + " degree Celcious ");
+			res.send();
 		})
 	})
 
 
 
-	res.send("server running");
+	// res.send("server running");
 });
 
 
